@@ -44,7 +44,7 @@ export default function ProductDetail() {
     try {
       const res = await axios({
         method: "post",
-        url: "http://localhost:5000/cart",
+        url: "http://localhost:5000/api/cart",
         data: {
           "title": prod.title,
           "img": prod.category.image,
@@ -72,7 +72,7 @@ export default function ProductDetail() {
   }
 
   useEffect(() => {
-      axios.get(`http://localhost:5000/product/${id}`)
+      axios.get(`http://localhost:5000/api/product/${id}`)
         .then(res => {
           setproduct(res.data)
   
@@ -130,7 +130,7 @@ export default function ProductDetail() {
                 title="add to cart"
                 onClick={() => {
 
-                  setcart(product)
+                   setcart(product)
 
                 }}
                 style={{

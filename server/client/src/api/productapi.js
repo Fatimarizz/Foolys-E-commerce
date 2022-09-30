@@ -3,7 +3,7 @@ import axios from "axios";
 
   export async function getproduct(offset,limit) {
    try{
-    const result =await axios.get('http://localhost:5000/product', {
+    const result =await axios.get('http://localhost:5000/api/product', {
         headers: { 'limit': limit,
         'currentpage' : offset
      }

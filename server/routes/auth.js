@@ -10,9 +10,9 @@ const Cart = require('../models/cartModel')
 const authenticate = require('../middleware/authenticate')
 const cart = require('../models/cartModel')
 //Middlewares
-router.get('/', (req, res) => {
-    res.send('hello world')
-})
+// router.get('/', (req, res) => {
+//     res.send('hello world my home page of foolys ')
+// })
 
 //for pasword authentication we use=> npm i bcryptjs
 //for user login authentication we use jwt => npm install jsonwebtoken

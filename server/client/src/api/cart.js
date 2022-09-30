@@ -3,7 +3,7 @@ import Cookies from "js-cookie";
 // import { useNavigate } from "react-router-dom";
 
 export function DeleteCart(id) {
-  axios.delete(`http://localhost:5000/cart/${id}`)
+  axios.delete(`http://localhost:5000/api/cart/${id}`)
     .then(res => {
       console.log(res);
       window.location = '/cart';
@@ -16,7 +16,7 @@ export const Callcart = async () => {
     const token = Cookies.get('jwtoken')
     //   console.log("token", token)
 
-    const res = await axios.get('http://localhost:5000/cart', {
+    const res = await axios.get('http://localhost:5000/api/cart', {
       headers: { 'Authorization': `token ${token}` }
     },
       {

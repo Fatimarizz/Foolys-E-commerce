@@ -60,7 +60,7 @@ export default function Signup() {
    
      onSubmit: values => {
     
-      axios.post('http://localhost:5000/signup', values)
+      axios.post('http://localhost:5000/api/signup', values)
       
       .then(result => {
           console.log('successfully posted', result)

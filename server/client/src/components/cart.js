@@ -42,16 +42,16 @@ export default function Cart() {
           return sum += obj.price * obj.quantity;
 
         })
+        console.log(sum)
         setprice(sum)
-        console.log("response", res)
+        
       }
       else
         navigate("/login")
 
     }
-    dispatch(getCartValue())
     getcartDetail();
-   
+    dispatch(getCartValue())
   }, [dispatch,navigate])
 
   return (
@@ -82,7 +82,7 @@ export default function Cart() {
                     <br />
                   </Typography>
                   <Typography variant="h6" component="div">
-                    Price: {c?.price * c?.quantity} $
+                    Total Price: {c?.price * c?.quantity} $
                   </Typography>
                   <Typography variant="h6" component="div">
                     Quantity: {c?.quantity}
@@ -134,7 +134,7 @@ export default function Cart() {
               <img alt="cart" src="../images/cartfinal.gif" className="h-[360px]"></img>
               <Button variant="contained" onClick={() => {
                 navigate('/catalogue')
-              }} style={{ marginTop: '25px', marginLeft: '99px' }}> <ShoppingBagIcon /></Button>
+              }} style={{ marginTop: '25px', background: '#ef9baa', marginLeft: '99px' }}>Shopping<ShoppingBagIcon /></Button>
             </div>
             )
           }

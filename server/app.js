@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const path = require('path')
 const cors = require('cors')
 require('dotenv').config({ path: './config.env' })
+const PORT = process.env.PORT || 5000;
 //Model require
 // const user = require('./models/userModel')
 const corsOptions = {
@@ -14,7 +15,7 @@ const corsOptions = {
 app.use(cors(corsOptions))
 app.use(express.json())// json ka data ko convert krdo object ma
 
-app.use(require('./routes/auth.js'))
+app.use("/api",require('./routes/auth.js'))
 
 //db connection 
 
@@ -27,6 +28,16 @@ mongoose.connection.on('error', () => {
     console.log("database error occured");
 })
 
-app.listen(5000, () => {
+app.listen(PORT , () => {
     console.log('http://localhost:5000/')
 })
+
+// 3rd step of heruko 
+if (process.env.NODE_ENV == "production"){
+    app.use(express.static("client/build"));
+    const path = require("path");
+    app.get("*",(req,res)=>{
+        res.sendFile(path.resolve(__dirname,'client','build','index.html'))
+    }
+    )
+}

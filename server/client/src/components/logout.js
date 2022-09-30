@@ -14,7 +14,7 @@ export default function Logout() {
     const navigate= useNavigate()
     const dispatch= useDispatch();
     useEffect(()=>{
-        axios.get('http://localhost:5000/logout',
+        axios.get('http://localhost:5000/api/logout',
         {
           withCredentials: true,
         })

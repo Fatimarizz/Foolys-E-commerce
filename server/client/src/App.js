@@ -1,7 +1,7 @@
 import './App.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {  Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Navbar from './components/navbar';
 import { Container } from '@mui/material';
 import Home from './components/home';
@@ -14,34 +14,53 @@ import Cart from './components/cart';
 import ProductDetail from './components/productDetail';
 import Errorpage from './components/errorpage';
 import { Quantity } from './components/Quantity';
+import Cookies from "js-cookie";
+import { user } from './redux/counter';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
 
 
 
 function App() {
+  const dispatch = useDispatch()
+  const token = Cookies.get('jwtoken')
 
+  
+useEffect(() => {
+  
+ checklogic()
+},[])
 
+function checklogic() {
+  if (token === '' || !token) {
+    dispatch(user(false))
+  }
+  else {
+    dispatch(user(true))
+  }
+}
   return (
-   
+
 
     <div  >
       <Navbar />
-      <Container  maxWidth="xl" >
-      <Routes>
+      <Container maxWidth="xl" >
+        <Routes>
 
-        <Route path='/'  element={ <Home/>} />
-        <Route path='/login' element={ <Login/>}/>
-        <Route path='/signup'element={ <Signup/>} />
-        <Route path='/Catalogue'element={ <Catalogue  />} />
-        <Route path='/drawer'element={ <Drawer/>}/>
-        <Route path='/cart'element={ <Cart/>}/>
-        <Route path='/logout' element= { <Logout/> }/>
-        <Route path='/product/:id'element={ <ProductDetail  />}/>
-        <Route path='/*' element= { <Errorpage/> }/>
-        <Route  element= { <Quantity/> }/>
-      </Routes>
-     
-      <ToastContainer/>
+          <Route path='/' element={<Home />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/signup' element={<Signup />} />
+          <Route path='/Catalogue' element={<Catalogue />} />
+          <Route path='/drawer' element={<Drawer />} />
+          <Route path='/cart' element={<Cart />} />
+          <Route path='/logout' element={<Logout />} />
+          <Route path='/product/:id' element={<ProductDetail />} />
+          <Route path='/*' element={<Errorpage />} />
+          <Route element={<Quantity />} />
+        </Routes>
+
+        <ToastContainer />
       </Container>
     </div>
   );
